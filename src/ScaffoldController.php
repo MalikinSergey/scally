@@ -4,7 +4,7 @@ namespace Tokenbox\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 
-class DummyScaffoldController extends BaseController
+class ScaffoldController extends BaseController
 {
     
     public function create()
@@ -14,7 +14,6 @@ class DummyScaffoldController extends BaseController
     
     public function store()
     {
-        
         $data = request()->all();
         
         $data['model_variable'] = '$' . camel_case($data['model_class_name']);
@@ -29,10 +28,10 @@ class DummyScaffoldController extends BaseController
         
         $map = [
             
-            'AdminViewNs' => config('dummy_scaffold.admin_view_namespace'),
-            'AdminRouteNs' => config('dummy_scaffold.admin_route_namespace'),
-            'DummyNamespaceControllersAdmin' => config('dummy_scaffold.controller_namespace'),
-            'DummyNamespaceModel' => config('dummy_scaffold.model_namespace'),
+            'AdminViewNs' => config('scally.admin_view_namespace'),
+            'AdminRouteNs' => config('scally.admin_route_namespace'),
+            'DummyNamespaceControllersAdmin' => config('scally.controller_namespace'),
+            'DummyNamespaceModel' => config('scally.model_namespace'),
             'DummyAppNamespace' => trim(app()->getNamespace(), "\\"),
             'DummyModel' => $data['model_class_name'],
             'DummyPluralModel' => str_plural($data['model_class_name']),
@@ -46,12 +45,12 @@ class DummyScaffoldController extends BaseController
         
         # declare directories
         
-        $scaffoldDir = config('dummy_scaffold.scaffold_path') . "/" . $data['model_slug'];
-        $controllersDir = $scaffoldDir . "/" . config('dummy_scaffold.controllers_path');
-        $modelsDir = $scaffoldDir . "/" . config('dummy_scaffold.models_path');
+        $scaffoldDir = config('scally.scaffold_path') . "/" . $data['model_slug'];
+        $controllersDir = $scaffoldDir . "/" . config('scally.controllers_path');
+        $modelsDir = $scaffoldDir . "/" . config('scally.models_path');
         $migrationsDir = $scaffoldDir . "/database/migrations";
-        $langDir = $scaffoldDir . "/resources/lang/" . config('dummy_scaffold.locale');
-        $viewsDir = $scaffoldDir . "/resources/views/" . config('dummy_scaffold.admin_view_namespace') . "/" . $data['model_slug_plural'];
+        $langDir = $scaffoldDir . "/resources/lang/" . config('scally.locale');
+        $viewsDir = $scaffoldDir . "/resources/views/" . config('scally.admin_view_namespace') . "/" . $data['model_slug_plural'];
         
         # create directories
         

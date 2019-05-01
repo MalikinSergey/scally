@@ -9,6 +9,18 @@
             "email": "malikin.sergey.1988@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Mlsg\\Scally\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mlsg\\Scally\\MlsgScallyServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "stable",
     "require": {}
 }
