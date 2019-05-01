@@ -163,7 +163,9 @@ class ScaffoldController extends BaseController
         
         #
         
-        return date('H:i:s');
+        $routesLine = "Route::resource('{$data['model_slug']}', '{$data['model_class_name']}Controller');";
+        
+        return $routesLine;
     }
     
     public function makeValidationArray($attributes)
