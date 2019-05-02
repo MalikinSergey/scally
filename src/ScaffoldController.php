@@ -27,8 +27,9 @@ class ScaffoldController extends BaseController
         
         $data = request()->all();
         
-        $data['model_variable'] = '$' . camel_case($data['model_class_name']);
-        $data['model_variable_plural'] = '$' . camel_case(str_plural($data['model_class_name']));
+        $data['model_variable_plural'] = '$' . $data['model_slug_plural'];
+        
+        $data['model_variable'] = '$' . $data['model_slug'];
         
         $attributes = request('attributes');
         
