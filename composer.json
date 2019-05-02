@@ -24,6 +24,7 @@
     "minimum-stability": "stable",
     "require": {
         "laravel/framework": "5.*",
-        "friendsofphp/php-cs-fixer": "~2"
+        "friendsofphp/php-cs-fixer": "~2",
+        "riimu/kit-phpencoder": "^2.4"
     }
 }
