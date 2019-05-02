@@ -22,5 +22,8 @@
         }
     },
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "laravel/framework": "5.*",
+        "friendsofphp/php-cs-fixer": "~2"
+    }
 }

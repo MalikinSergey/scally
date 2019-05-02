@@ -33,9 +33,7 @@
 
         $('.attribute_name').on('keyup', function (e) {
           e.preventDefault()
-
           $(this).parents('tr').find('.attribute_title').val(_.capitalize($(this).val()))
-
         })
 
       })
@@ -52,9 +50,9 @@
         
         <div class="col">
             
-            <h1>Dummy scaffold</h1>
+            <h1>Scaffold</h1>
             
-            <form method="post" action="/dummy-scaffold/store">
+            <form method="post" action="{{route("scally.scaffold.store")}}">
                 
                 
                 <div class="row">
@@ -107,7 +105,7 @@
                             </tr>
         
                             </thead>
-                            @for($i=0;$i<8;$i++)
+                            @for($i=0;$i<12;$i++)
                                 <tr>
                 
                                     <td>
@@ -126,7 +124,7 @@
                     
                                         <select name="attributes[{{$i}}][type]" class="form-control">
                         
-                                            @foreach(config('dummy_scaffold.attribute_types') as $key => $data)
+                                            @foreach(config('scally.attribute_types') as $key => $data)
                                                 <option value="{{$key}}">{{data_get($data, 'name')}}</option>
                                             @endforeach
                     

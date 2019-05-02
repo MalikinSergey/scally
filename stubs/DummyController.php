@@ -61,12 +61,12 @@ class DummyController extends Controller
     
     public function update(Request $request, $id)
     {
-        $this->validate(
-            $request,
-            [RULES],
-            [],
-            trans('DummyPluralSlug.attributes')
-        );
+        //$this->validate(
+        //    $request,
+        //    [RULES],
+        //    [],
+        //    trans('DummyPluralSlug.attributes')
+        //);
         
         $dummy = DummyModel::find($id);
         

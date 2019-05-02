@@ -1,6 +1,6 @@
 <?php
 
-namespace Tokenbox\Http\Controllers;
+namespace Mlsg\Scally;
 
 use Illuminate\Routing\Controller as BaseController;
 
@@ -9,11 +9,22 @@ class ScaffoldController extends BaseController
     
     public function create()
     {
-        return view('admin.dummy_scaffold.create', []);
+        return view('scally::scaffold.create');
+    }
+    
+    public function getStubsPath()
+    {
+        if (config('scally.stubs_path')) {
+            return config('scally.stubs_path');
+        } else {
+            return __DIR__ . "/../stubs";
+        }
     }
     
     public function store()
     {
+        $stubsPath = $this->getStubsPath();
+        
         $data = request()->all();
         
         $data['model_variable'] = '$' . camel_case($data['model_class_name']);
@@ -65,7 +76,7 @@ class ScaffoldController extends BaseController
         $migrationContent = $this->makeMigrationContent($attributes);
         
         $migrationContent = $this->createContent(
-            base_path('dummy_stubs/dummy_migration.php'),
+            $stubsPath . '/dummy_migration.php',
             $map + ['#DummyTableAttibutes' => $migrationContent]
         );
         
@@ -98,7 +109,7 @@ class ScaffoldController extends BaseController
         ];
         
         $modelContent = $this->createContent(
-            base_path('dummy_stubs/DummyModel.php'),
+            $stubsPath . '/DummyModel.php',
             $map + $modelMap
         );
         
@@ -115,7 +126,7 @@ class ScaffoldController extends BaseController
         ];
         
         $controllerContent = $this->createContent(
-            base_path('dummy_stubs/DummyController.php'),
+            $stubsPath . '/DummyController.php',
             $map + $controllerMap
         );
         
@@ -136,7 +147,7 @@ class ScaffoldController extends BaseController
         ];
         
         $indexViewContent = $this->createContent(
-            base_path('dummy_stubs/views/index.blade.php'),
+            $stubsPath . '/views/index.blade.php',
             $map + $viewsMap
         );
         
@@ -144,7 +155,7 @@ class ScaffoldController extends BaseController
             $indexViewContent
         );
         $createViewContent = $this->createContent(
-            base_path('dummy_stubs/views/create.blade.php'),
+            $stubsPath . '/views/create.blade.php',
             $map + $viewsMap
         );
         
@@ -153,7 +164,7 @@ class ScaffoldController extends BaseController
         );
         
         $editViewContent = $this->createContent(
-            base_path('dummy_stubs/views/edit.blade.php'),
+            $stubsPath . '/views/edit.blade.php',
             $map + $viewsMap
         );
         
@@ -207,7 +218,7 @@ class ScaffoldController extends BaseController
                 'AttrPluralName' => str_plural($attribute['name']),
             ];
             
-            $viewDummy = base_path('dummy_stubs/views/types/' . $attribute['type'] . '.blade.php');
+            $viewDummy = $this->getStubsPath() . '/views/types/' . $attribute['type'] . '.blade.php';
             
             $fields[] = $this->createContent($viewDummy, $map + $attrMap);
         }
@@ -298,5 +309,29 @@ class ScaffoldController extends BaseController
         }
         
         return $string;
+    }
+    
+    /**
+     * Run PHP Cs Fixer on scaffold files
+     *
+     * @param $files
+     */
+    public function runCsFixerOnFiles($files)
+    {
+        
+        foreach ($files as $file) {
+            
+            if (substr($file, -10, 10) == '.blade.php') {
+                continue;
+            }
+            
+            $file = escapeshellarg($file);
+            
+            $options = '--using-cache=no --rules=@Symfony,@PSR2,@PSR1';
+            
+            $command = 'vendor' . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'php-cs-fixer';
+            
+            `$command fix $file $options 2>&1`;
+        }
     }
 }
