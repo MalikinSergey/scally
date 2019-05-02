@@ -1,6 +1,6 @@
 <?php
 
-namespace Tokenbox;
+namespace DummyAppNamespace;
 
 class DummyModel extends \Eloquent
 {
