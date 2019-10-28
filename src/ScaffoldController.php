@@ -33,7 +33,7 @@ class ScaffoldController extends BaseController
         
         $attributes = request('attributes');
         
-        $attributes = array_where($attributes, function ($item) {
+        $attributes = \Arr::where($attributes, function ($item) {
             
             return data_get($item, 'name');
         });
@@ -98,11 +98,11 @@ class ScaffoldController extends BaseController
         
         # model
         
-        $fillableKeys = array_where($attributes, function ($item) {
+        $fillableKeys = \Arr::where($attributes, function ($item) {
             return data_get($item, 'editable');
         });
         
-        $fillableKeys = array_pluck($fillableKeys, 'name');
+        $fillableKeys = \Arr::pluck($fillableKeys, 'name');
         
         $modelMap = [
             '$fillable' => '$fillable = ' . $this->varEncode($fillableKeys, ['array.inline' => true]),
