@@ -46,7 +46,7 @@ class ScaffoldController extends BaseController
             'DummyNamespaceModel' => config('scally.model_namespace'),
             'DummyAppNamespace' => trim(app()->getNamespace(), "\\"),
             'DummyModel' => $data['model_class_name'],
-            'DummyPluralModel' => str_plural($data['model_class_name']),
+            'DummyPluralModel' => \Str::plural($data['model_class_name']),
             'DummySlug' => $data['model_slug'],
             'DummyPluralSlug' => $data['model_slug_plural'],
             'DummyName' => $data['model_name'],
@@ -82,7 +82,7 @@ class ScaffoldController extends BaseController
         );
         
         $migrationName = date('Y_m_d_His',
-                0) . "_create_" . snake_case(str_plural($data['model_class_name'])) . "_table.php";
+                0) . "_create_" . snake_case(\Str::plural($data['model_class_name'])) . "_table.php";
         
         \File::put($migrationsDir . "/" . $migrationName, $migrationContent);
         
@@ -216,7 +216,7 @@ class ScaffoldController extends BaseController
             $attrMap = [
                 'AttrTitle' => $attribute['title'],
                 'AttrName' => $attribute['name'],
-                'AttrPluralName' => str_plural($attribute['name']),
+                'AttrPluralName' => \Str::plural($attribute['name']),
             ];
             
             $viewDummy = $this->getStubsPath() . '/views/types/' . $attribute['type'] . '.blade.php';
@@ -245,7 +245,7 @@ class ScaffoldController extends BaseController
             $data['attributes'][data_get($attribute, 'name')] = data_get($attribute, 'title');
             
             if ($attribute['type'] === 'variants') {
-                $data[str_plural($attribute['name'])] = ['one' => 'Edit this list in resources lang file'];
+                $data[\Str::plural($attribute['name'])] = ['one' => 'Edit this list in resources lang file'];
             }
         }
         
