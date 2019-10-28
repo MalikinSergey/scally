@@ -1,6 +1,6 @@
 {
     "name": "mlsg/scally",
-    "description": "Scally is a web scaffold generator for Laravel 5",
+    "description": "Scally is a web scaffold generator for Laravel 5/6",
     "type": "library",
     "license": "MIT",
     "authors": [
