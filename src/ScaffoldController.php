@@ -81,8 +81,7 @@ class ScaffoldController extends BaseController
             $map + ['#DummyTableAttibutes' => $migrationContent]
         );
         
-        $migrationName = date('Y_m_d_His',
-                0) . "_create_" . \Str::snake(\Str::plural($data['model_class_name'])) . "_table.php";
+        $migrationName = date('Y_m_d_His') . "_create_" . \Str::snake(\Str::plural($data['model_class_name'])) . "_table.php";
         
         \File::put($migrationsDir . "/" . $migrationName, $migrationContent);
         
