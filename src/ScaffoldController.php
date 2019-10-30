@@ -57,7 +57,7 @@ class ScaffoldController extends BaseController
         
         # declare directories
         
-        $scaffoldDir = config('scally.scaffold_path') . "/" . $data['model_slug'];
+        $scaffoldDir = config('scally.scaffold_path') . "/" . $data['model_slug']."/".date("Y-m-d_H-i");
         $controllersDir = $scaffoldDir . "/" . config('scally.controllers_path');
         $modelsDir = $scaffoldDir . "/" . config('scally.models_path');
         $migrationsDir = $scaffoldDir . "/database/migrations";
