@@ -62,7 +62,7 @@ class ScaffoldController extends BaseController
         $modelsDir = $scaffoldDir . "/" . config('scally.models_path');
         $migrationsDir = $scaffoldDir . "/database/migrations";
         $langDir = $scaffoldDir . "/resources/lang/" . config('scally.locale');
-        $viewsDir = $scaffoldDir . "/resources/views/" . config('scally.admin_view_namespace') . "/" . $data['model_slug_plural'];
+        $viewsDir = $scaffoldDir . "/resources/views/" . config('scally.admin_view_namespace') . "/" . $data['model_slug'];
         
         # create directories
         

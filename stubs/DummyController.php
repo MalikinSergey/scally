@@ -13,12 +13,12 @@ class DummyController extends Controller
     {
         $dummies = DummyModel::all();
         
-        return view('AdminViewNs.DummyPluralSlug.index', ['DummyPluralSlug' => $dummies]);
+        return view('AdminViewNs.DummySlug.index', ['DummyPluralSlug' => $dummies]);
     }
     
     public function create()
     {
-        return view('AdminViewNs.DummyPluralSlug.create', []);
+        return view('AdminViewNs.DummySlug.create', []);
     }
     
     public function store(Request $request)
@@ -27,7 +27,7 @@ class DummyController extends Controller
         //    $request,
         //    [RULES],
         //    [],
-        //    trans('DummyPluralSlug.attributes')
+        //    trans('DummySlug.attributes')
         //);
         
         $dummy = new DummyModel();
@@ -38,7 +38,7 @@ class DummyController extends Controller
         
         $dummy->save();
         
-        return redirect()->route("AdminRouteNs.DummyPluralSlug.index")->withMessage('common.success');
+        return redirect()->route("AdminRouteNs.DummySlug.index")->withMessage('common.success');
     }
     
     public function show(Request $request, $id)
@@ -47,7 +47,7 @@ class DummyController extends Controller
         
         /** @type DummyModel $dummy */
         
-        return view('AdminViewNs.DummyPluralSlug.show', ['DummySlug' => $dummy]);
+        return view('AdminViewNs.DummySlug.show', ['DummySlug' => $dummy]);
     }
     
     public function edit($id)
@@ -56,7 +56,7 @@ class DummyController extends Controller
         
         /** @type DummyModel $dummy */
         
-        return view('AdminViewNs.DummyPluralSlug.edit', ['DummySlug' => $dummy]);
+        return view('AdminViewNs.DummySlug.edit', ['DummySlug' => $dummy]);
     }
     
     public function update(Request $request, $id)
@@ -65,7 +65,7 @@ class DummyController extends Controller
         //    $request,
         //    [RULES],
         //    [],
-        //    trans('DummyPluralSlug.attributes')
+        //    trans('DummySlug.attributes')
         //);
         
         $dummy = DummyModel::find($id);
@@ -76,7 +76,7 @@ class DummyController extends Controller
         
         $dummy->save();
         
-        return redirect()->route("AdminRouteNs.DummyPluralSlug.edit", $dummy->id)->withMessage('common.success');
+        return redirect()->route("AdminRouteNs.DummySlug.edit", $dummy->id)->withMessage('common.success');
     }
     
     public function destroy(Request $request, $id)
@@ -87,7 +87,7 @@ class DummyController extends Controller
         
         $dummy->delete();
         
-        return redirect()->route("AdminRouteNs.DummyPluralSlug.index")->withMessage('common.success');
+        return redirect()->route("AdminRouteNs.DummySlug.index")->withMessage('common.success');
     }
     
 }
