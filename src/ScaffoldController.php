@@ -265,7 +265,7 @@ class ScaffoldController extends BaseController
             
             $code = '$table->';
             
-            $code .= config("dummy_scaffold.attribute_types.{$attribute['type']}.blueprint");
+            $code .= config("scally.attribute_types.{$attribute['type']}.blueprint");
             
             $code .= "('{$attribute['name']}')";
             
