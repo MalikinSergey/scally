@@ -27,7 +27,7 @@ class DummyController extends Controller
         //    $request,
         //    [RULES],
         //    [],
-        //    trans('DummySlug.attributes')
+        //    trans('DummyPluralSlug.attributes')
         //);
         
         $dummy = new DummyModel();
@@ -65,7 +65,7 @@ class DummyController extends Controller
         //    $request,
         //    [RULES],
         //    [],
-        //    trans('DummySlug.attributes')
+        //    trans('DummyPluralSlug.attributes')
         //);
         
         $dummy = DummyModel::find($id);
