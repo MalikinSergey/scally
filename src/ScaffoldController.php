@@ -82,7 +82,7 @@ class ScaffoldController extends BaseController
         );
         
         $migrationName = date('Y_m_d_His',
-                0) . "_create_" . snake_case(\Str::plural($data['model_class_name'])) . "_table.php";
+                0) . "_create_" . \Str::snake(\Str::plural($data['model_class_name'])) . "_table.php";
         
         \File::put($migrationsDir . "/" . $migrationName, $migrationContent);
         
