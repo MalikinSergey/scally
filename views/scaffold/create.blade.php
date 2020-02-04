@@ -105,7 +105,7 @@
                             </tr>
         
                             </thead>
-                            @for($i=0;$i<12;$i++)
+                            @for($i=0;$i< request('n', 12);$i++)
                                 <tr>
                 
                                     <td>
