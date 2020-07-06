@@ -1,6 +1,6 @@
 {
     "name": "mlsg/scally",
-    "description": "Scally is a web scaffold generator for Laravel 5/6",
+    "description": "Scally is a web scaffold generator for Laravel 7",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -23,7 +23,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "laravel/framework": "6.*",
+        "laravel/framework": "7.*",
         "friendsofphp/php-cs-fixer": "~2",
         "riimu/kit-phpencoder": "^2.4"
     }
