@@ -15,15 +15,15 @@ return [
     
     'scaffold_path' => storage_path('scaffold'),
     
-    'admin_view_namespace' => 'admin',
+    'admin_view_namespace' => 'dashboard',
     
-    'admin_route_namespace' => 'admin',
+    'admin_route_namespace' => 'dashboard',
     
     'models_path' => 'app',
     
-    'controllers_path' => 'app/Http/Controllers/Admin',
+    'controllers_path' => 'app/Http/Controllers/Dashboard',
     
-    'controller_namespace' => app()->getNamespace() . 'Http\Controllers\Admin',
+    'controller_namespace' => app()->getNamespace() . 'Http\Controllers\Dashboard',
     
     'model_namespace' => app()->getNamespace(),
     
@@ -52,6 +52,11 @@ return [
         'variants' => [
             'name' => 'Variants (in DB: string)',
             'blueprint' => 'string',
+        ],
+          
+        'jsonb' => [
+            'name' => 'JSONB',
+            'blueprint' => 'jsonb',
         ],
     ]
 
