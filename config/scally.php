@@ -19,13 +19,13 @@ return [
     
     'admin_route_namespace' => 'dashboard',
     
-    'models_path' => 'app',
+    'models_path' => 'app/Models',
     
     'controllers_path' => 'app/Http/Controllers/Dashboard',
     
     'controller_namespace' => app()->getNamespace() . 'Http\Controllers\Dashboard',
     
-    'model_namespace' => app()->getNamespace(),
+    'model_namespace' => app()->getNamespace().'Models',
     
     'locale' => app()->getLocale(),
     
