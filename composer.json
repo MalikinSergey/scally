@@ -23,7 +23,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "laravel/framework": "7.*",
+        "laravel/framework": "7.0|^8.0",
         "friendsofphp/php-cs-fixer": "~2",
         "riimu/kit-phpencoder": "^2.4"
     }
