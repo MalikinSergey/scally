@@ -44,9 +44,20 @@ return [
         ],
         
         'integer' => [
-            'name' => 'UNSIGNED BIGINT',
+            'name' => 'Unsigned BigInt',
             'blueprint' => 'unsignedBigInteger',
         
+        ],
+
+        'unsigned_decimal' => [
+            'name' => 'Unsigned Decimal',
+            'blueprint' => 'unsignedDecimal',
+
+        ],
+
+        'decimal' => [
+            'name' => 'Decimal',
+            'blueprint' => 'decimal',
         ],
         
         'variants' => [
