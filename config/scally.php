@@ -44,8 +44,8 @@ return [
         ],
         
         'integer' => [
-            'name' => 'Integer',
-            'blueprint' => 'integer',
+            'name' => 'UNSIGNED BIGINT',
+            'blueprint' => 'unsignedBigInteger',
         
         ],
         
